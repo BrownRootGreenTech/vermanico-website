@@ -93,8 +93,8 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full my-8">
+    <div className="fixed inset-0 z-50 flex items-start md:items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
+      <div className="bg-white rounded-2xl shadow-2xl max-w-4xl w-full my-4 sm:my-8 max-h-[95vh] flex flex-col">
         {/* Header */}
         <div className="sticky top-0 bg-gradient-to-r from-primary-600 to-primary-700 text-white p-6 rounded-t-2xl flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -116,7 +116,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => 
         </div>
 
         {/* Product Info */}
-        <div className="p-6 bg-primary-50 border-b border-primary-200">
+        <div className="p-4 sm:p-6 bg-primary-50 border-b border-primary-200 flex-shrink-0">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <Package className="h-5 w-5 text-primary-600" />
@@ -129,10 +129,10 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => 
             </div>
           </div>
           {totalAmount > 0 && (
-            <div className="mt-4 pt-4 border-t border-primary-200">
+            <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-primary-200">
               <div className="flex justify-between items-center">
                 <span className="text-sm font-medium text-primary-700">Total Amount:</span>
-                <span className="text-2xl font-bold text-primary-600">₹{totalAmount}</span>
+                <span className="text-xl sm:text-2xl font-bold text-primary-600">₹{totalAmount}</span>
               </div>
               <p className="text-xs text-primary-600 mt-1">
                 {formData.quantity} × ₹{product.price} per {product.unit}
@@ -141,8 +141,9 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => 
           )}
         </div>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="p-8 space-y-6">
+        {/* Form - Scrollable Content */}
+        <div className="overflow-y-auto flex-1">
+          <form onSubmit={handleSubmit} className="p-4 sm:p-8 space-y-4 sm:space-y-6">
           {/* Success Message */}
           {submitStatus === 'success' && (
             <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
@@ -307,7 +308,8 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => 
           <p className="text-xs text-primary-600 text-center">
             We&apos;ll contact you to confirm your order and delivery details.
           </p>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );
