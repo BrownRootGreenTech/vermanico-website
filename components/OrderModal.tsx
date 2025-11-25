@@ -147,7 +147,7 @@ const OrderModal: React.FC<OrderModalProps> = ({ isOpen, onClose, product }) => 
           {submitStatus === 'success' && (
             <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg">
               <p className="font-medium">Order submitted successfully!</p>
-              <p className="text-sm">We'll contact you soon.</p>
+              <p className="text-sm">We&apos;ll contact you soon.</p>
             </div>
           )}
 
